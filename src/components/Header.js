@@ -8,8 +8,8 @@ export default function Header() {
             <div className="mask">
                 <div className="d-flex justify-content-center align-items-center h-100">
                     <div className="text-white">
-                        <h1 className="mb-3">Mamma Mia</h1>
-                        <h4 className="mb-3">Las mejores pizzas!</h4>
+                        <h1 className="mb-3">¡Pizzeria Mamma Mia</h1>
+                        <h4 className="mb-3">Tenemos las mejores pizzas que podrás encontrar!<hr className="solid" /></h4>
                     </div>
                 </div>
             </div>
