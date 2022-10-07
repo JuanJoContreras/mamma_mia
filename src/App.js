@@ -21,12 +21,12 @@ function App() {
   async function getPizza() {
     const res = await fetch(window.location.origin+'/pizzas.json');
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     setListaProductos(data);
   }
 
   useEffect(() => {
-    console.log('ab');
+    //console.log('ab');
     getPizza();
   }, []);
 

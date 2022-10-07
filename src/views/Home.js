@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/Header';
 import Grilla from '../components/Grilla';
 import Context from "../Context";
