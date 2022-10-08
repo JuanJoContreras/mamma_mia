@@ -1,40 +1,66 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { formatNumber } from '../Helper';
+import PizzasContext from '../Context';
 import "../assets/css/card.css";
 
-export default function Card({ producto }) {
+const Card = () => {
+    // const [total, setTotal] = useState(0);
+    const { pizzas, addToCart } = useContext(PizzasContext);
+  
     const navigate = useNavigate();
-
-
+  
     return (
-
-
-        <div className="galeria grid-columns-5 p-3" key={producto.id}>
-            <img className="card-img-top"
-                src={producto.img}
-                alt={producto.name}
-            />
-            <div className="card-body">
-                <h5 className="card-title">{producto.name}</h5>
+      <>
+        {pizzas.map((pizza) => (
+          <div key={pizza.id} className="col">
+            <div className="card">
+              <img className="card-img-top" src={pizza.img} alt="" />
+              <div className="card-body">
+                <h4 className="card-title text-capitalize">{pizza.name}</h4>
                 <hr />
-                <ul className="text-left">
-                    <p>Ingredientes:</p>
-                    {producto.ingredients.map((i) => (
-                        <li>🍕 {i}</li>
-                    ))}
+                <p className="card-text">
+                  <b>Ingredientes:</b>
+                </p>
+  
+                <ul>
+                  {pizza.ingredients.map((ingredient, i) => (
+                    <li key={i}>
+                      {/* &#127829;  */}
+                      🍕 {ingredient}
+                    </li>
+                  ))}
                 </ul>
-                <hr />
-                <ul className="text-left">
-                    <p>$
-                    {producto.price}
-                    </p>
-                </ul>
-                
-                <div className="d-flex">
-                    <button className="btn btn-info text-white" onClick={() => navigate(`/pizza/${producto.id}`)}>Ver más👀</button>
-                    <button className="btn btn-danger" onClick={() => ('/carrito')}>Añadir🛒</button>
-                </div>
+              </div>
+  
+              <h2 className="text-center text-dark pb-3">
+                Precio: ${formatNumber(pizza.price)}
+              </h2>
+  
+              <div className="d-flex justify-content-around mb-4">
+                <button
+                  to={`/pizza/${pizza.id}`}
+                  className="btn btn-info text-white"
+                  onClick={() => navigate(`/pizzas/${pizza.id}`)}
+                >
+                  Ver Más
+                  {/* &#128064; */}
+                </button>
+  
+                <button
+                  className="btn btn-danger"
+                  onClick={() => addToCart(pizza)}
+                >
+                  Añadir
+                  {/* &#128722; */}
+                </button>
+              </div>
             </div>
-        </div>
-    )
-}
+          </div>
+        ))}
+      </>
+    );
+  };
+  
+  export default Card;

@@ -37,3 +37,7 @@ h1 {
   /*animation: typing 2s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;*/
   margin-bottom: 10px;
 }
+
+li {
+  list-style: none;
+}

@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
 import Header from '../components/Header';
-import Grilla from '../components/Grilla';
-import Context from "../Context";
-
-export default function Home() {
+import Card from '../components/Card';
 
 
-    const { listaProductos, setListaProductos } = useContext(Context);
-
-    console.log(listaProductos);
+const Home = () => {
     return (
-        <div>
-            <Header />
-            <Grilla data={listaProductos}/>
+      <>
+     
+        <Header />
+        <div className="container my-4">
+          <div className="row row-cols-1 row-cols-md-3 g-4">
+            <Card />
+          </div>
         </div>
-    )
-}
+      </>
+    );
+  };
+  
+  export default Home;

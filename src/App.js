@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles.css";
+import "./assets/css/styles.css";
 
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./views/Home";
@@ -10,40 +9,21 @@ import Carrito from "./views/Carrito";
 import NotFound from "./views/NotFound";
 
 import Navbar from "./components/Navbar";
-
-import Context from "./Context";
-
+import {PizzasProvider} from "./Context";
 
 function App() {
-  const [listaProductos, setListaProductos] = useState([]);
-  const [totalPedido, setTotalPedido] = useState(0);
-
-  async function getPizza() {
-    const res = await fetch(window.location.origin+'/pizzas.json');
-    const data = await res.json();
-    //console.log(data);
-    setListaProductos(data);
-  }
-
-  useEffect(() => {
-    //console.log('ab');
-    getPizza();
-  }, []);
-
   return (
-    <div className="App">
-      <Context.Provider value={{ listaProductos, setListaProductos, totalPedido, setTotalPedido }}>
-        <BrowserRouter>
-          <Navbar></Navbar>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/pizza/:id" element={<Pizzas />}></Route>
-            <Route path="/carrito" element={<Carrito />}></Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </Context.Provider>
-    </div>
+    <BrowserRouter>
+      <PizzasProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pizzas/:id" element={<Pizzas />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PizzasProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import '../assets/css/header.css';
 
-export default function Header() {
-    return (
-
+const Header = () => {
+    return (       
         <div className="p-5 text-center bg-image rounded-3 banner">
             <div className="mask">
                 <div className="d-flex justify-content-center align-items-center h-100">
@@ -13,8 +12,7 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-        </div>
-
-
+        </div>      
     )
 }
+export default Header;
