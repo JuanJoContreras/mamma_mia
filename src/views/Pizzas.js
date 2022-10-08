@@ -38,7 +38,7 @@ const obtenerDatos = () => {
                   {pizzaDetail.ingredients?.map((ingredient, i) => (
                     <li key={i}>
                       {/* &#127829;  */}
-                      {ingredient}
+                      🍕{ingredient}
                     </li>
                   ))}
                 </ul>
